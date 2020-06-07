@@ -1,0 +1,5 @@
+insert into user_model values (101, 'Rent', 'Every Month', 5000)
+insert into user_model values (102, 'daily expenses', 'Food and groceries', 300)
+insert into user_model values (103, 'Rent', 'Every Month', 10000)
+insert into user_model values (104, 'Rent', 'Every Month', 7000)
+insert into user_model values (105, 'Rent', 'Every Month', 8000)
