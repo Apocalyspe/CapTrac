@@ -1,2 +1,2 @@
 # CapTrac
-Web Application
+Web Application for Personal Expense Tracker (mimic)
