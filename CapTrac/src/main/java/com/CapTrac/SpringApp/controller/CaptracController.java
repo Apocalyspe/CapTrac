@@ -1,43 +1,41 @@
 package com.CapTrac.SpringApp.controller;
 
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
-import com.CapTrac.SpringApp.model.UserModel;
-import com.CapTrac.SpringApp.repo.UserRepo;
+import com.CapTrac.SpringApp.model.CredentialManager;
+import com.CapTrac.SpringApp.service.BusinessLogic;
 
 @Controller
 public class CaptracController {
 
+
+	
 	@Autowired
-	UserRepo repo;	
+	BusinessLogic logic;
 	
-	@RequestMapping("/")
-	public String home() {
+	
+	@RequestMapping("/logged")
+	public ModelAndView AddExpense(CredentialManager creds) {
 		
-		return "index.jsp";
+		ModelAndView mv = logic.welset(creds);
+			
+		return mv;
 	}
 	
-	@RequestMapping("/addexpense")
-	public String AddExpense() {
-				
-		return "ExpenseAdd.jsp";
+	/*
+	 * @RequestMapping("/submitexpense") public String SaveExpense(ExpenseModel
+	 * model, HttpSession session) {
+	 * 
+	 * 
+	 * repo.save(model); System.out.println(model.getAmount());
+	 * System.out.println(model.getExpenseType());
+	 * 
+	 * 
+	 * return "ExpenseAdd.jsp"; }
+	 */
 	}
-	
-	@RequestMapping("/submitexpense")
-	public String SaveExpense(UserModel model, HttpSession session) {
-		
-		
-		repo.save(model);
-		System.out.println(model.getAmount());
-		System.out.println(model.getExpenseType());
-		System.out.println(model.getAccountid());
-		
-				
-		return "ExpenseAdd.jsp";
-	}
-}

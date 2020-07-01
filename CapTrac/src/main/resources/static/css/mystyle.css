@@ -1,0 +1,92 @@
+@charset "ISO-8859-1";
+.btn-group button {
+    background-color: #4CAF50; /* Green background */
+    border: 1px solid rgb(1, 117, 1); /* Green border */
+    color: white; /* White text */
+    padding: 10px 37px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+  }
+  div.btn-group{
+    border: 2px solid #3e8e41;
+    width: 500px;
+    margin: 0 auto;
+  }
+  
+  .balance-update{
+    border: 2px solid #3e8e41;
+  }
+  
+  .btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+  }
+  
+  /* Clear floats (clearfix hack) */
+  .btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  /* Add a background color on hover */
+  .btn-group button:hover {
+    background-color: #3e8e41;
+  }
+  
+  .addexpense{
+    border: 2px solid springgreen;
+    width: 60%;
+    margin: 10px auto;
+    padding: 50px;
+  }
+  
+  #addexpense_div label{
+    display: block;
+  }
+  
+  #schedule_div label{
+    display: block;
+  
+  }
+  
+
+  
+  body{
+    font-family: sans-serif;
+  }
+  #schedule_div{
+    display: none;
+    border: 2px solid springgreen;
+    width: 60%;
+    margin: 10px auto;
+    padding: 50px;  
+  }
+  
+  #delete_div{
+    display: none;
+    border: 2px solid springgreen;
+    padding: 20px;     
+  }
+
+  .delete_div i{
+    
+    text-align: center;
+    padding: 16px;
+    transition: all 0.3s ease;
+    color: rgb(12, 11, 11);
+    font-size: 36px;
+  }
+
+  ul {
+      list-style-type: none;
+      margin-left: -50px;
+  }
+
+  ul li{
+      display: block;
+      padding: 5px;
+      border: 1px solid black;
+      box-shadow: black;
+      
+  }
+  
