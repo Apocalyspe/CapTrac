@@ -11,9 +11,10 @@
 <script src="/js/script.js"></script>
 <body>
 
+
   <div class="btn-group">
-    <h2 align="center">Welcome ${name}</h2>
-    <div class="balance-update"><h5>Balance:  ${TotalExpense}</h5>
+    <h2 align="Left">Welcome ${name}</h2><div align="right"><form action="/logout" align="left"><input type= "submit" value="Logout"></form></div>
+    <div class="balance-update"><h5>Amount:  ${TotalExpense}</h5>
 	 		<button type="submit" id="addexpense_button" onclick="addexpense_div()">Add expense</button>
   		<button type="submit" id="schedule_button" onclick="schedule_div()">Schedule Salary</button>
       <button type="submit" id="delete_button" onclick="delete_div()">View Expense</button>
@@ -21,9 +22,10 @@
 
     <div  class="addexpense" id="addexpense_div">
         <form action="/addexpense">
-            <label>Expense-Type: </label><input type="text" name="expense"><br><br>
+            <label>Expense-Type: </label><input type="text" name="ExpenseType"><br><br>
             <label>Amount: </label><input type="text" name="amount"><br><br>
-            <label>Date: </label><input type="date" name="date"><br><br>
+            <label>Date: </label><input type="date" name="date" pattern = "yyyy-MM-dd HH:mm:ss"><br><br>
+            <label>Remark: </label><input type="text" name="Remark"><br><br>
            
             <input type="submit" name="expense" value="Add Expense"> 
         </form>

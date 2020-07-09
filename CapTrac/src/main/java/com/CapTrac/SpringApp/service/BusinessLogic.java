@@ -1,9 +1,15 @@
 package com.CapTrac.SpringApp.service;
 
-import java.util.Optional;
+
+
+
+import java.text.SimpleDateFormat;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.CapTrac.SpringApp.model.CredentialManager;
@@ -12,6 +18,7 @@ import com.CapTrac.SpringApp.repo.ExpenseRepo;
 import com.CapTrac.SpringApp.repo.UserRepo;
 
 @Component
+@SessionAttributes("name")
 public class BusinessLogic {
 	
 	@Autowired
@@ -22,25 +29,22 @@ public class BusinessLogic {
 
 	ExpenseModel emodel;
 
-	public ModelAndView welset(CredentialManager creds) {
+	
+	
+	public ModelAndView welset(CredentialManager creds, HttpSession session) {
 		
 		ModelAndView mv = new ModelAndView();
+		System.out.println(session.getId());
 		
 		if(repo.existsByUsername(creds.getUsername())==true && repo.existsByPassword(creds.getPassword())==true) {
 			mv.setViewName("Welcome.jsp");
 			mv.addObject("name",creds.getUsername());
 			
-			Optional<ExpenseModel> expensemodel = erepo.findById(creds.getAccountid());
-			if(expensemodel.isPresent()) {
-				mv.addObject("TotalExpense", erepo.findByCreds(creds.getAccountid()));
-			}
-			/*
-			 * try { if(erepo.findById(creds.getAccountid()).isPresent())
-			 * mv.addObject("Balance", erepo.findById(creds.getAccountid())); else {
-			 * emodel.setBalance(0); System.out.println(); mv.addObject("Balance", "0"); } }
-			 * catch (Exception e) { // TODO Auto-generated catch block e.printStackTrace();
-			 * }
-			 */
+			CredentialManager cred = repo.findByUsername(creds.getUsername());
+			
+			session.setAttribute("accid", cred.getAccountid());
+			
+			
 		}
 		else {
 			mv.setViewName("login.jsp");
@@ -51,5 +55,49 @@ public class BusinessLogic {
 	}
 	
 	
+	
+	public ModelAndView SaveExpense(ExpenseModel model, HttpSession session, CredentialManager creds) {
+		
+		ModelAndView mv = new ModelAndView();
+		
+		//Getting Account ID
+		
+		int id = (int) session.getAttribute("accid");
+		System.out.println(id);
+		
+		//Setting Transaction ID
+		
+		String tm = "CT" + id + new SimpleDateFormat("yyyyMMdd").format(model.getDate());
+		model.setTransacid(tm);
+		System.out.println(tm);
+		
+		//Saving in repo
+
+		model.setTotalexpense(model.getAmount()+model.getTotalexpense());
+		erepo.save(model);
+		erepo.saveCredsaccountid(id,tm);
+		System.out.println(model.getTotalexpense());
+		
+		
+		
+		
+		mv.setViewName("Welcome.jsp");
+		
+		return mv; 
+	}
+	
+	public ModelAndView Register(CredentialManager creds, HttpSession session) {
+		
+		ModelAndView mv = new ModelAndView();
+		
+		
+		
+		return mv; 
+	}
+
+	public ModelAndView ChangePassword(CredentialManager creds, HttpSession session) {
+		
+		return null;
+	}
 	
 }

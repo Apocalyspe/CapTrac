@@ -6,7 +6,20 @@
 <head>
 <meta charset="ISO-8859-1">
 </head>
+<script>
+
+</script>
 <body>
+
+<%
+
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+response.setHeader("Expires", "0");
+session.invalidate();
+
+
+%>
+
 <h2>Login to continue</h2> <p><a href="/Register.jsp">sign up</a></p>
     <div>
         <form action="/logged">
@@ -15,7 +28,7 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input type="submit" name="login" value="Login"> <a href="/ChangePWD.jsp">Forgot Password</a>
-            <p> ${message }</p>
+            <p> ${message}</p>
         </form>
     </div>
 </body>

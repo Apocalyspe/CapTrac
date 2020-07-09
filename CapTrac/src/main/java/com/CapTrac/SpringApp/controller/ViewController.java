@@ -20,17 +20,18 @@ public class ViewController{
 		return "login.jsp";
 	}
 	
+	
 	@RequestMapping("/welcome")
 	public String welcome() {
 		
 		return "Welcome.jsp";
 	}
 	
-	@RequestMapping("/register")
-	public String register() {
-		
-		return "Register.jsp";
-	}
+	/*
+	 * @RequestMapping("/register") public String register() {
+	 * 
+	 * return "Register.jsp"; }
+	 */
 	
 	@RequestMapping("/changepwd")
 	public String changepwd() {
