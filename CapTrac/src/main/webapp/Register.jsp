@@ -11,7 +11,7 @@
            Sign up 
      </h2>
         <div class="regform">
-            <form action="/Register.jsp">
+            <form action="/register">
                 <label>     Username:      </label><input type="text" name="username"></input><br><br>
                 <label>Type your password: </label><input type="text" name="password"><br><br>
                 <label>Retype the password:</label><input type="text" name="password"><br><br>

@@ -7,16 +7,19 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 
+
+
 @Entity
 public class ExpenseModel {
 
 	@Id
-	private int transacid;
+	private String transacid;
 	private String ExpenseType;
 	private int amount;
 	private String Remark;
 	private Date date;
 	private int totalexpense;
+	
 	
 	@ManyToOne
 	private CredentialManager creds;
@@ -28,10 +31,10 @@ public class ExpenseModel {
 	public void setCreds(CredentialManager creds) {
 		this.creds = creds;
 	}
-	public int getTransacid() {
+	public String getTransacid() {
 		return transacid;
 	}
-	public void setTransacid(int transacid) {
+	public void setTransacid(String transacid) {
 		this.transacid = transacid;
 	}
 	public String getExpenseType() {
@@ -57,7 +60,7 @@ public class ExpenseModel {
 		return date;
 	}
 	public void setDate(Date date) {
-		this.date = date;
+		 this.date=date;
 	}
 
 	public int getTotalexpense() {

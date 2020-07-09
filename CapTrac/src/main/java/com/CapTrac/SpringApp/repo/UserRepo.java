@@ -12,6 +12,8 @@ public interface UserRepo extends CrudRepository<CredentialManager, Integer>{
 	boolean existsByUsername(String username);
 	boolean existsByPassword(String password);
 	
+	CredentialManager findByUsername(String username);
+	
 	
 	
 }

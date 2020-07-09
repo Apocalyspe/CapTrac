@@ -21,7 +21,7 @@
     }
 
     function myform(){
-        document.getElementById("submit").action = '/login.html';
+        document.getElementById("submit").action = '/changepass';
     }
 
 </script>
