@@ -1,8 +1,6 @@
 package com.CapTrac.SpringApp.service;
 
 
-
-
 import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpSession;
