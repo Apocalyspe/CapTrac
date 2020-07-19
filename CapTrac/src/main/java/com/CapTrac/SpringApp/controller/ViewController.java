@@ -5,37 +5,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class ViewController{
-	
+public class ViewController {
+
 	@RequestMapping("/")
 	@ResponseBody
 	public String main() {
-		
+
 		return "Main page";
 	}
-	
-	@RequestMapping("/login")
+
+	@RequestMapping("/loginpage")
 	public String login() {
-		
+
 		return "login.jsp";
 	}
-	
-	
-	@RequestMapping("/welcome")
+
+	@RequestMapping("/welcomepage")
 	public String welcome() {
-		
+
 		return "Welcome.jsp";
 	}
+
 	
-	/*
-	 * @RequestMapping("/register") public String register() {
-	 * 
-	 * return "Register.jsp"; }
-	 */
-	
-	@RequestMapping("/changepwd")
+	  @RequestMapping("/register") 
+	  public String register() {
+	  
+	  return "Register.jsp"; }
+	 
+
+	@RequestMapping("/changereq")
 	public String changepwd() {
-		
+
 		return "ChangePWD.jsp";
 	}
 }
