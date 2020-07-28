@@ -13,7 +13,20 @@ public class Users {
     private String email;
 
 
-    public long getUserID() {
+    public Users() {
+    	
+    }
+    
+
+    public Users(Long userID, String username, String password, String email) {
+		this.userID = userID;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+	}
+    
+    
+	public long getUserID() {
         return userID;
     }
     public void setUserID(Long userID) {

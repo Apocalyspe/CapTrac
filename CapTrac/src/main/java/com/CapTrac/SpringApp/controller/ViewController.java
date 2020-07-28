@@ -27,13 +27,14 @@ public class ViewController {
 	}
 
 	
-	  @RequestMapping("/register") 
+	  @RequestMapping("/registerpage") 
 	  public String register() {
 	  
-	  return "Register.jsp"; }
+	  return "Register.jsp"; 
+	  }
 	 
 
-	@RequestMapping("/changereq")
+	@RequestMapping("/changepage")
 	public String changepwd() {
 
 		return "ChangePWD.jsp";

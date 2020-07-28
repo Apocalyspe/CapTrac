@@ -26,7 +26,21 @@ public class UserExpenseInfo {
 
         private Users user;
 
-        public Users getUser() {
+        
+        
+        
+        public UserExpenseInfo(String transacid, String expenseType, float amount, String remark, Date date,
+				 Users user) {
+			
+			this.transacid = transacid;
+			this.ExpenseType = expenseType;
+			this.amount = amount;
+			this.Remark = remark;
+			this.date = date;
+			this.user = user;
+		}
+
+		public Users getUser() {
         return user;
          }
 
@@ -73,11 +87,4 @@ public class UserExpenseInfo {
             this.totalexpense = totalexpense;
         }
 
-        public long getUserID(){
-            return user.getUserID();
-        }
-
-        public String getUserName(){
-            return user.getUsername();
-        }
     }

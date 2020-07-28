@@ -11,19 +11,11 @@
 </script>
 <body>
 
-<%
-
-response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-response.setHeader("Expires", "0");
-session.invalidate();
-
-
-%>
 
 <h2>Login to continue</h2> <p><a href="/Register.jsp">sign up</a></p>
     <div>
-        <form action="/logged">
-            <label>Username: </label><input type="text" name="username"><br><br>
+        <form action="/login">
+            <label>Mob. Number: </label><input type="text" name="userID"><br><br>
             <label>Password: </label><input type="text" name="password"><br><br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
