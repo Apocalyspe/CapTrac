@@ -15,10 +15,13 @@ public class UserInfoService {
 	RestTemplate restTemplate = new RestTemplate();
 	
 	public Users getUserInfo(Long userID) {
-		
-		Users jsonUser = restTemplate.getForObject("http://localhost:8080/users/" + userID, Users.class);
+
+		System.out.println("in getuserinfo service");
+		System.out.println(userID);
+
+		Users jsonUser = restTemplate.getForObject("http://Captrac-Backend/users/" + userID, Users.class);
 		Users user = new Users(jsonUser.getUserID(), jsonUser.getUsername(), jsonUser.getPassword(), jsonUser.getEmail());
-		
+
 		return user;
 	}
 }

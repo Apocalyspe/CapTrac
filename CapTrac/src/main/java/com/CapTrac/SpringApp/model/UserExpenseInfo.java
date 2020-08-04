@@ -1,10 +1,13 @@
 package com.CapTrac.SpringApp.model;
 
 
-import java.sql.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.io.Serializable;
+import java.sql.Timestamp;
 
 
-public class UserExpenseInfo {
+public class UserExpenseInfo implements Serializable {
 
         
         private String transacid;
@@ -18,29 +21,28 @@ public class UserExpenseInfo {
         
         private String Remark;
 
-        
-        private Date date;
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
+        private Timestamp timestamp;
 
         private float totalexpense;
 
 
         private Users user;
 
-        
-        
-        
-        public UserExpenseInfo(String transacid, String expenseType, float amount, String remark, Date date,
-				 Users user) {
-			
-			this.transacid = transacid;
-			this.ExpenseType = expenseType;
-			this.amount = amount;
-			this.Remark = remark;
-			this.date = date;
-			this.user = user;
-		}
+    public UserExpenseInfo() {
+    }
 
-		public Users getUser() {
+    public UserExpenseInfo(String transacid, String expenseType, float amount, String remark, Timestamp timestamp, float totalexpense, Users user) {
+            this.transacid = transacid;
+            ExpenseType = expenseType;
+            this.amount = amount;
+            Remark = remark;
+            this.timestamp = timestamp;
+            this.totalexpense = totalexpense;
+            this.user = user;
+        }
+
+        public Users getUser() {
         return user;
          }
 
@@ -73,14 +75,15 @@ public class UserExpenseInfo {
             Remark = remark;
         }
 
-        public Date getDate() {
-            return date;
-        }
-        public void setDate(Date date) {
-            this.date=date;
-        }
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
 
-        public float getTotalexpense() {
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public float getTotalexpense() {
             return totalexpense;
         }
         public void setTotalexpense(float totalexpense) {

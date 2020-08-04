@@ -33,7 +33,7 @@
         	<form action="/addexpense">
             	<label>Expense-Type: </label>	<input type="text" name="ExpenseType"><br><br>
             	<label>Amount: </label>			<input type="text" name="amount"><br><br>
-            	<label>Date: </label>			<input type="date" name="date" pattern = "yyyy-MM-dd HH:mm:ss"><br><br>
+            	<label>Date: </label>			<input type = "datetime-local" name= "timestamp" pattern = "yyyy-MM-dd HH:mm:ss"><br><br>
             	<label>Remark: </label>			<input type="text" name="Remark"><br><br>
             	<input type="submit" name="expense" value="Add Expense"> 
             	${ message }

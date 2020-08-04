@@ -23,6 +23,9 @@ public class CaptracController {
 	
 	@Autowired
 	ApplicationService applicationService;
+
+	@Autowired
+	TransactionService transactionService;
 	
 	@RequestMapping("/login")
 	public ModelAndView loginCheck(Users formUser, HttpSession session) {
@@ -59,10 +62,12 @@ public class CaptracController {
 	}
 	
 	@RequestMapping("/addexpense")
-	public ModelAndView addTrasaction(UserExpenseInfo userxpenseinfo, HttpSession session) {
+	public ModelAndView addTrasaction(@RequestParam("timestamp") String timestamp, @RequestParam("ExpenseType") String expenseType,
+									  @RequestParam("amount") float amount, @RequestParam("Remark") String remark,
+									  HttpSession session) {
 		
-		ModelAndView mv = TransactionService.addExpense(userxpenseinfo, session);
-		
+		ModelAndView mv = transactionService.addExpense(timestamp, expenseType, amount,remark, session);
+
 		return mv;
 	}
 }

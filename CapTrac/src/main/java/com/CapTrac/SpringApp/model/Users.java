@@ -1,7 +1,9 @@
 package com.CapTrac.SpringApp.model;
 
 
-public class Users {
+import java.io.Serializable;
+
+public class Users implements Serializable {
 
 
     private Long userID;

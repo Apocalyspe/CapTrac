@@ -24,7 +24,7 @@ public class ApplicationService {
 	
 	
 	public ModelAndView loginCheck(Users formUser, HttpSession session) {
-		
+
 		ModelAndView mv = new ModelAndView();
 		
 		Users user = userinfoservice.getUserInfo(formUser.getUserID());
@@ -36,10 +36,12 @@ public class ApplicationService {
 					mv.setViewName("Welcome.jsp");
 					session.setAttribute("name", user.getUsername());
 					session.setAttribute("userID", user.getUserID());
+					//mv.addObject("userID", user.getUserID());
 					System.out.println(user.getUserID());
+					System.out.println(session.getId());
+
 				}
 				else {
-					
 					mv.setViewName("login.jsp");
 					mv.addObject("message", "Incorrect username or password");
 				}
@@ -69,7 +71,7 @@ public class ApplicationService {
 		ModelAndView mv = new ModelAndView();
 		session.setAttribute("userID", userID);
 		
-		Boolean response = restTemplate.getForObject("http://localhost:8080/users/check/" + userID, Boolean.class);
+		Boolean response = restTemplate.getForObject("http://Captrac-Backend/users/check/" + userID, Boolean.class);
 		
 		if(response==true) {
 			mv.addObject("message","Number verified successfully");
@@ -100,7 +102,7 @@ public class ApplicationService {
 		  Users postUser = new Users(jsonUser.getUserID(), jsonUser.getUsername(), users.getPassword(), jsonUser.getEmail());
 		  
 		  try {
-			  		restTemplate.postForObject("http://localhost:8080/users/" + userID, postUser, Users.class);
+			  		restTemplate.postForObject("http://Captrac-Backend/users/" + userID, postUser, Users.class);
 					mv.addObject("changeMessage", "Password changed successfully");
 					session.invalidate();
 					mv.setViewName("ChangePWD.jsp");
