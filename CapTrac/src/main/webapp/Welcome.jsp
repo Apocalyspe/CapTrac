@@ -35,7 +35,7 @@
             	<label>Amount: </label>			<input type="text" name="amount"><br><br>
             	<label>Date: </label>			<input type = "datetime-local" name= "timestamp" pattern = "yyyy-MM-dd HH:mm:ss"><br><br>
             	<label>Remark: </label>			<input type="text" name="Remark"><br><br>
-            	<input type="submit" name="expense" value="Add Expense"> 
+            	<input type="submit" name="expense" value="Add Expense"> <br><br>
             	${ message }
         	</form>
         	
