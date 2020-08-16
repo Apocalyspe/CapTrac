@@ -14,8 +14,7 @@
 
  <div class="btn-group">
  
-    	<h2 align="Left">${greeting} ${name}</h2>
-    	
+    	<h2 align="Left">Hi!&nbsp;&nbsp;${name}</h2>&nbsp;&nbsp;&#8377;${totalexpense}
     	<div align="right">
     		<form action="/logout" align="right"><input type= "submit" value="Logout"></form>
     	</div>
@@ -30,7 +29,7 @@
 
  	 	<div  class="addexpense" id="addexpense_div">
  	 	
-        	<form action="/addexpense">
+        	<form action="/add+expense">
             	<label>Expense-Type: </label>	<input type="text" name="ExpenseType"><br><br>
             	<label>Amount: </label>			<input type="text" name="amount"><br><br>
             	<label>Date: </label>			<input type = "datetime-local" name= "timestamp" pattern = "yyyy-MM-dd HH:mm:ss"><br><br>
@@ -43,11 +42,11 @@
     
     	<div id="schedule_div">
     
-      		<form action="/schedule">
+      		<form action="/schedule+expense">
       		
         		<label>Schedule: </label>
         		
-          		  <select name="Expense_type" id="expense_type">
+          		  <select name="ExpenseType" id="expense_type">
           			<option value="Credit">Credit</option>
            			<option value="Debit">Debit</option>
           		  </select><br><br>
@@ -59,7 +58,7 @@
             		<option value="weekly">Weekly</option>
             		<option value="Monthly">Monthly</option>
            		  </select><br><br>
-           		
+           		<label>Kickstart from: </label>	<input type = "datetime-local" name= "timestamp" pattern = "yyyy-MM-dd HH:mm:ss"><br><br>
         		<label>Amount: </label>			<input type="text" name="amount"><br><br>
         		
        			<input type="submit" name="expense" value="Add Expense">

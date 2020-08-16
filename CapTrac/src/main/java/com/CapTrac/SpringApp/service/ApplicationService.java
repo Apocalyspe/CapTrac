@@ -21,31 +21,43 @@ public class ApplicationService {
     @Autowired
     private UserInfoService userinfoservice;
 
+    @Autowired
+    private UserExpenseInfoService userexpenseinfoservice;
 
     public ModelAndView loginCheck(Users formUser, HttpSession session) {
 
         ModelAndView mv = new ModelAndView();
 
-        Users user = userinfoservice.getUserInfo(formUser.getUserID());
-
-
         try {
+            Users user = userinfoservice.getUserInfo(formUser.getUserID());
+
             if (user.getUserID().equals(formUser.getUserID()) && formUser.getPassword().equals(user.getPassword())) {
-                System.out.println("I am in true condition");
+
                 mv.setViewName("Welcome.jsp");
                 session.setAttribute("name", user.getUsername());
                 session.setAttribute("userID", user.getUserID());
-                //mv.addObject("userID", user.getUserID());
-                System.out.println(user.getUserID());
-                System.out.println(session.getId());
+                Float totalexpense = userexpenseinfoservice.getUserLastexpense(user.getUserID());
+
+                if (totalexpense < 0) {
+                    mv.addObject("totalexpense", "<p3 style=\"color: red;\">Your net outlay is " + -(totalexpense) + "</p3>");
+
+                } else if (totalexpense > 0) {
+                    mv.addObject("totalexpense", "<p3 style=\"color: green;\">Your net gain is " + totalexpense + "</p3>");
+
+                } else {
+                    mv.addObject("totalexpense", "<p3>" + 0 + "</p3>");
+
+                }
+
+                System.out.println("HI Im outside");
 
             } else {
                 mv.setViewName("login.jsp");
                 mv.addObject("message", "Incorrect username or password");
             }
         } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            mv.setViewName("login.jsp");
+            mv.addObject("message", "User does not exists");
         }
 
         return mv;
